@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>几何跳跃</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: #f3f3f3;
+        }
+        #startScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #f3f3f3;
+        }
+        #startButton {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="startScreen">
+        <h1>几何跳跃</h1>
+        <button id="startButton">开始游戏</button>
+    </div>
+    <canvas id="gameCanvas" width="800" height="600" style="display: none;"></canvas>
+    <script>
+        alert('目前为V1.0正式版\n已知问题: 1. 跳跃有一点延迟 2. 越过障碍物可能会一直加分。\n如遇到一直加分的情况，请刷新网页后重试！');
+        document.getElementById('startButton').addEventListener('click', function() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('gameCanvas').style.display = 'block';
+            // 动态加载并执行.js
+            var script = document.createElement('script');
+            script.src = 'HGCity.js';
+            document.head.appendChild(script);
+            script.onload = function() {
+                // 调用游戏初始化函数
+                initGame();
+            };
+        });
+    </script>
+</body>
+</html>

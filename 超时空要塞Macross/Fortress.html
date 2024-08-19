@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>超时空要塞Delta</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            overflow: hidden; /* 防止滚动条 */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* 使内容垂直排列 */
+            text-align: center; /* 使文字水平居中 */
+            user-select: none; /* 防止选择 */
+        }
+        body {
+            background-color: #000000; /* 背景颜色 */
+            background-image: url('img/主界面.jpg');
+            background-size: 100% 150%;
+            background-position: center; /* 使背景图像居中 */
+            background-repeat: no-repeat; /* 防止背景图像重复 */
+        }
+
+        .logo {
+            background-image: url('img/LOGO.PNG');
+            background-size: cover;
+            width: 300px; /* 根据图片大小调整 */
+            height: 210px; /* 根据图片大小调整 */
+            border-radius: 5%; /* 圆形 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 羽化效果 */
+            opacity: 0;
+            transform: translateY(-100px) rotateX(90deg);
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        #startButton {
+            background-color: #4CAF50; /* 背景颜色 */
+            border: none; /* 去掉边框 */
+            color: white; /* 文字颜色 */
+            padding: 15px 32px; /* 内边距 */
+            text-align: center; /* 文字居中 */
+            text-decoration: none; /* 去掉下划线 */
+            display: inline-block; /* 行内块元素 */
+            font-size: 16px; /* 字体大小 */
+            margin: 4px 2px; /* 外边距 */
+            cursor: pointer; /* 鼠标样式 */
+            border-radius: 12px; /* 圆角 */
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); /* 阴影 */
+            transition: 0.3s; /* 过渡效果 */
+            opacity: 0;
+            transform: translateY(-100px) rotateX(90deg);
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+            user-select: auto; /* 允许选择 */
+        }
+        #startButton:hover {
+            background-color: #00caee; /* 悬停时的背景颜色 */
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); /* 悬停时的阴影 */
+        }
+        h1,p {
+            opacity: 0;
+            transform: translateY(-100px) rotateX(90deg);
+            animation: fadeIn 1s ease-in-out 1s forwards;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px aliceblue; /* 文字阴影 */
+        }
+            p {
+            opacity: 0;
+            transform: translateY(-100px) rotateX(90deg);
+            animation: fadeIn 2s ease-in-out 1s forwards;
+            color: #FFFFFF;
+            text-shadow: 2px 2px 4px aliceblue; /* 文字阴影 */
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0) rotateX(0);
+            }
+        }
+        .bg1, .bg2 {
+            width: 50%;
+            height: 50%;
+            z-index: -1;
+            opacity: 0.8;
+            -webkit-user-drag: none; /* 防止拖动 */
+            user-select: none; /* 防止选择 */
+        }
+        .bg1 {
+            position: absolute;
+            left: 50%;
+            animation: move1 4s;
+        }
+        .bg2 {
+            position: absolute;
+            right: 50%;
+            animation: move2 4s;
+        }
+
+        @keyframes move1 {
+            0% {
+                transform: translateX(-300%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        @keyframes move2 {
+            0% {
+                transform: translateX(300%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #modalContent {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+       #modalContent button {
+            display: block; /* 使按钮成为块级元素 */
+            margin: 0 auto; /* 水平居中 */
+            padding: 10px 20px; /* 增加内边距 */
+            font-size: 16px; /* 设置字体大小 */
+            border: none; /* 去除边框 */
+            border-radius: 5px; /* 添加圆角 */
+            background-color: #007BFF; /* 设置背景颜色 */
+            color: white; /* 设置文字颜色 */
+            cursor: pointer; /* 设置鼠标悬停样式 */
+            transition: background-color 0.3s ease; /* 添加过渡效果 */
+        }
+
+        #modalContent button:hover {
+            background-color: #0056b3; /* 悬停时的背景颜色 */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="modal">
+        <div style="margin:20px; text-align:left;" id="modalContent">
+            <h2 style="text-align: center;">免责声明</h2>
+            <br><br>本游戏《超时空要塞Delta》为非商业性质的同人作品，旨在向原作品致敬并供爱好者交流使用。本游戏的开发和发布未获得原版权方的授权或许可，不以盈利为目的，且不涉及任何商业利益。
+            <br><br>1. 本游戏使用的所有素材，包括但不限于角色、图像、音乐、剧情等，均为原作品的衍生创作，其版权归原版权方所有。
+            <br>2. 本游戏的开发团队对游戏内容进行了原创设计，但不对原作品的任何内容进行商业利用或侵犯版权。
+            <br>3. 我们尊重原作品的版权，若原版权方认为本游戏侵犯了其合法权益，请及时与我们联系，我们将立即采取措施予以解决。
+            <br>4. 本游戏不提供任何形式的下载、销售或商业推广，仅限于同人圈内的非盈利性质分享。
+            <br>5. 玩家下载或使用本游戏，即表示同意本免责声明，并承诺不将本游戏用于任何商业目的。
+            <br><br>我们希望通过本游戏，让更多爱好者体验到原作品的魅力，并在遵守版权法规的前提下，享受同人创作的乐趣。
+            <br><br><button  onclick="closeDisclaimer()">同意并继续</button>
+        </div>
+    </div>
+    <div id="content" style="display: none;">
+        <img class="bg1" src="img/bgplane.PNG" alt="bg1"  />
+        <img class="bg2" src="img/bgplane2.png" alt="bg2" />
+        <div id="startScreen">
+            <div class="logo" style="margin: auto;"></div>
+            <h1>超时空要塞Delta</h1>
+            <button id="startButton">开始游戏</button>
+            <div style="margin: 20px; text-align: left;">
+            <p style="text-indent: 2em;">在《超时空要塞Delta》的宇宙中，人类已经扩展到了星际，但随着新世界的发现，也引来了未知的威胁。Delta要塞，作为人类的前线基地，装备了最尖端的武器和超时空跳跃技术，负责探索和保卫人类的边疆。</p>
+            <p style="text-indent: 2em;">玩家将扮演Delta要塞的精英飞行员，驾驶战斗机在浩瀚的宇宙中执行任务，与外星种族“虚空之影”进行激烈的空中对抗。在战斗中，玩家需要不断提升自己的技能，解锁更先进的装备，以应对不断升级的威胁。</p>
+            <p style="text-indent: 2em;">随着故事的推进，玩家将揭开宇宙深处的秘密，发现古老文明的遗迹，并在星际战争中扮演关键角色，决定人类在宇宙中的命运。</p>
+            </div>
+        </div>
+    <canvas style="margin: auto;display: none;" id="gameCanvas" width="512" height="600" ></canvas>
+
+    <script>
+        // 禁用鼠标右键
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.getElementById('startButton').addEventListener('click', function() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('gameCanvas').style.display = 'block';
+            // 动态加载并执行.js
+            var script = document.createElement('script');
+            script.src = 'Delta.js';
+            document.head.appendChild(script);
+        });
+        window.onload = function() {
+            var modal = document.getElementById('modal');
+            if (modal) {
+                modal.style.display = 'flex'; // 显示模态框
+            }
+        };
+
+        function closeDisclaimer() {
+            var modal = document.getElementById('modal');
+            var content = document.getElementById('content');
+            if (modal) {
+                modal.style.display = 'none'; // 隐藏模态框
+            }
+            if (content) {
+                content.style.display = 'block'; // 显示内容
+            }
+        }
+    </script>
+</body>
+</html>
