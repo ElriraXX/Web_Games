@@ -1,2 +1,30 @@
-# Web_Games
-Some casual web-based mini-games
+# 网页小游戏开源项目介绍
+
+## 项目概述
+欢迎来到我的网页小游戏开源项目！这里集合了多种简单的网页小游戏。
+
+## 特点
+- **多样化的游戏类型**：我将会不定时的扩充多种类型的小游戏。
+- **易于集成**：我们的游戏设计为易于嵌入任何网页，无需复杂的设置。
+- **开源友好**：所有代码均在[GitHub](https://github.com/ElriraXX/Web_Games)上开源，欢迎大家贡献代码和改进。
+
+
+## 如何开始
+1. 克隆或下载我们的[开源项目](https://github.com/ElriraXX/Web_Games)。
+2. 阅读我们的放置于独立文件夹内的.txt文件了解如何运行和定制游戏。
+
+## 贡献
+你可以在[汉光圣域](https://www.mchgsy.top/)试玩部分游戏
+非常欢迎任何形式的贡献，无论是内容的二次创作、二次设计还是测试。
+
+## 许可
+本项目采用[MIT许可证](https://github.com/ElriraXX/Web_Games/blob/master/LICENSE)。你可以自由地使用、修改和分发代码，但请遵守许可证条款。
+
+## 联系我
+- 邮箱：[邮箱](kaztso@qq.com)
+- 社区论坛：[汉光圣域论坛](https://blog.mchgsy.top/)
+
+## 鸣谢
+感谢[汉光圣域](https://www.mchgsy.top/)对本项目的大力支持
+感谢所有为本项目做出贡献的开发者和用户！
+
