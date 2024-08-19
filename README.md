@@ -18,7 +18,7 @@
 非常欢迎任何形式的贡献，无论是内容的二次创作、二次设计还是测试。
 
 ## 许可
-本项目采用[MIT许可证](https://github.com/ElriraXX/Web_Games/blob/master/LICENSE)。你可以自由地使用、修改和分发代码，但请遵守许可证条款。
+本项目采用[Apache2.0许可证](https://github.com/ElriraXX/Web_Games/blob/master/LICENSE)。你可以自由地使用、修改和分发代码，但请遵守许可证条款。
 
 ## 联系我
 - 邮箱：[邮箱](kaztso@qq.com)
